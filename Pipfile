@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+Flask = "*"
+requests = "*"
+Flask-SQLAlchemy = "*"
+WTForms = "*"
+Flask-WTF = "*"
+wtforms-validators = "*"
+email-validator = "*"
+Flask-Login = "*"
+pandas = "*"
+SQLAlchemy = "*"
+gunicorn = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"

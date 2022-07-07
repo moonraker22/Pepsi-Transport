@@ -1,0 +1,45 @@
+{% extends "layout.html" %} {% block title %}{{title}}{% endblock %} {% block content %}
+<div class="container centered indigo lighten-5" style="border-radius: 10px;">
+    <blockquote>
+        Use this table to calculate what your pay would be for the week. You can also save the sheet for refernce later or to fill out each day. This is in no way a substitute for your actual paysheet or payroll.
+    </blockquote>
+</div>
+<div class="container" style="margin: 0px auto;">
+    <form method="POST" action=''>
+
+        <table class="highlight responsive-table indigo lighten-5" style="border-radius: 10px;">
+            <thead class="z-depth-5 blue darken-4 white-text" style="font-weight: 700; text-align: center;">
+
+                <td>Date</td>
+                <td>Truck Number</td>
+                <td>Starting Milage</td>
+                <td>Ending Milage</td>
+                <td>Total Milage</td>
+                <td>Backhaul</td>
+                <td>Delay(Hrs)</td>
+            </thead>
+            <tbody>
+                {% from "/_formhelpers.html" import render_field %}
+                <tr class="input-field">
+
+                    <td>{{ form.date(class= "datepicker") }}</td>
+                    <td> {{ form.truck() }} </td>
+                    <td> {{ form.starting_milage() }} </td>
+                    <td> {{ form.ending_milage() }} </td>
+                    <td> {{ form.miles() }} </td>
+                    <td> {{ form.backhaul() }} </td>
+                    <td> {{ form.delay() }} </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="3">Use this button to save the day</td>
+                    <td>{{ form.save(class="btn waves-effect waves-light red accent-4 pulse")}}
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+</div>
+</form>
+{% block script %} {% endblock %} {% endblock %}

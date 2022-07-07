@@ -1,0 +1,58 @@
+ {% extends "layout.html" %} {% block title %}{{title}}{% endblock %} {% block content %}
+
+<div class="container center">
+    <div class="row">
+        <div class="col m2"></div>
+        <div class="col s12 m8" style="margin-top: 12vh; background-color:transparent; border-radius: 20px;" id=card>
+            <div class="input-field">
+                <h4 class="h4 blue-text darken-4" style="margin-bottom: 4vh;">Sign In</h4>
+
+                <form action="" method="post">
+                    <div class="container input-field">
+                        {{ form.hidden_tag() }} {% if form.email.errors %}
+                        <i class="material-icons prefix">email</i> {{ form.email(class="") }}
+
+                        <div class="red-text text-accent-2">
+                            {% for error in form.email.errors %}
+                            <span>{{ error }}</span> {% endfor %}
+                        </div>
+                        {% else %} <i class="material-icons prefix">email</i> {{ form.email(class="") }} {% endif %}
+                    </div>
+
+                    <div class="container input-field">
+                        {% if form.password.errors %}
+                        <i class="material-icons prefix">enhanced_encryption
+                        </i> {{ form.password(class="") }}
+                        <div class="red-text text-accent-2">
+                            {% for error in form.password.errors %}
+                            <span>{{ error }}</span> {% endfor %}
+                        </div>
+                        {% else %} <i class="material-icons prefix">enhanced_encryption
+                        </i>{{ form.password(class="") }} {% endif %}
+                        <a href="#" class="right">Forgot Password</a>
+                    </div>
+                    <label>
+                        {{ form.remember() }} 
+                        <span>{{ form.remember.label }}</span>
+                    </label>
+
+
+                    <div class="input-field">
+                        <button style="margin-top: 3vw" class="btn waves-effect waves-light red darken-3 pulse" type="submit"><i class="material-icons right ">account_circle</i>Sign In</button>
+
+                    </div>
+
+                    <span><i class="material-icons">account_circle</i><a href="{{url_for('register')}}"> Need an account sign up here</a></span>
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col m2"></div>
+
+
+
+{% block script %} {% endblock %} {% endblock %}

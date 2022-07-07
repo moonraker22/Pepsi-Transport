@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <link href="/static/favicon.ico" rel="icon">
+
+</head>
+
+<body class="responsive-img">
+
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-wrapper  blue darken-4">
+            <a href="{{url_for('index')}}" class="brand-logo" style="margin-left: 10px;"> <span class="hide-on-med-and-down">Pepsi Tulsa </span>Transport Union</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down" style="margin-right: 10px;">
+                {% if logged_in %}
+                <li><a href="{{url_for('index')}}">Home</a></li>
+                <li><a href="{{url_for('locations')}}">Locations</a></li>
+                <li><a href="{{url_for('paysheets')}}">Paysheets</a></li>
+                <li><a href="{{url_for('logout')}}">Logout</a></li>
+                {% else %}
+                <li><a href="{{url_for('login')}}">Sign In</a></li>
+                <li><a href="{{url_for('register')}}">Sign Up</a></li>
+                {% endif %}
+            </ul>
+            <ul id="slide-out" class="sidenav">
+                <li>
+                    <div class="user-view">
+                        <div class="">
+                            <img src="/static/pepsi_side.jpg" alt="" class="responsive-img">
+                        </div>
+
+                    </div>
+                </li>
+                {% if logged_in %}
+                <li><a href="{{url_for('index')}}" class="waves-effect waves-red"><i class="material-icons">location_on</i>Home</a></li>
+                <li>
+                    <div class="divider"></div>
+                </li>
+                <li><a href="{{url_for('locations')}}" class="waves-effect waves-red"><i class="material-icons">location_on</i>Locations</a></li>
+                <li>
+                    <div class="divider"></div>
+                </li>
+                <li><a href="{{url_for('paysheets')}}" class="waves-effect waves-red"><i class="material-icons">description</i>Paysheets</a></li>
+
+                <li>
+                    <div class="divider"></div>
+                </li>
+                <li><a href="{{url_for('logout')}}" class="waves-effect waves-red"><i class="material-icons">switch_account</i>Logout</a></li>
+                <li>
+                    <div class="divider"></div>
+
+                    {% else %}
+                    <li><a href="{{url_for('login')}}" class="waves-effect waves-red"><i class="material-icons">account_circle</i>Sign In</a></li>
+                    <li>
+                        <div class="divider"></div>
+                    </li>
+                    <li><a href="{{url_for('register')}}" class="waves-effect waves-red"><i class="material-icons">switch_account</i>Sign Up</a></li>
+                    <li>
+                        <div class="divider"></div>
+                    </li>
+                    {% endif %}
+            </ul>
+            <a href="#" data-target="slide-out" class="sidenav-trigger sidenav-open"><i class="material-icons">menu</i></a>
+
+        </div>
+    </nav>
+    <!--Sidebar Nav-->
+
+    <!-- Message flashes -->
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in messages %}
+    <div class="container row z-depth-3 {{ category }}" style="margin-top: 5vh; border-radius: 15px;">
+        <div class="col s12">
+            <p class="center-align" style="font-weight: bold; font-size:1.5vw">{{ message }}</p> {% endfor %}
+        </div>
+    </div>
+    {% endif %} {% endwith %} {% block content %}
+    <main class="valign-wrapper"></main>{% endblock %}
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/static/main.js"></script>
+    <link href="/static/styles.css" rel="stylesheet">{% block script %} {% endblock %}
+
+</body>
+
+</html>

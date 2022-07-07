@@ -1,0 +1,27 @@
+{% extends "layout.html" %} {% block title %}{{title}}{% endblock %} {% block content %}
+
+
+
+<div class="container centered indigo lighten-5" style="border-radius: 10px;">
+    <blockquote class="center-align">
+        Click on location to see details
+    </blockquote>
+</div>
+<div class="container indigo lighten-5 " style="margin: 5vh auto; width: 50vw" style="border-radius: 10px;">
+
+    <div class="input-field col s12 center-align">
+        <form action="" method="post">
+            <h5>Choose location</h5>
+
+            {% from "/_formhelpers.html" import render_field %}
+            <div class="container" style="width: 30vw;">
+                {{ form.hidden_tag() }} {{ render_field(form.locations) }}
+            </div>
+            <div class="input-field">
+                <button style="margin: 2vw" class="btn waves-effect waves-light red darken-3 pulse" type="submit"><i class="material-icons right ">map</i>Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% block script %} {% endblock %} {% endblock %}

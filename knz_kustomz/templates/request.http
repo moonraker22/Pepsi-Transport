@@ -1,0 +1,18 @@
+https://www.google.com/maps/embed/v1/directions
+  ?key={{ config.GOOGLE_API_KEY }}
+  &origin={{tulsa.place_id}}
+  &destination={{mesquite.place_id}}
+  
+# <iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/directions?origin=place_id:ChIJpVol8ZaUtocROzFr1q9XYzU&destination=place_id:ChIJEWjrVvijToYRmsfTETRwuR0&key=AIzaSyBGU0prPaB2zfrK9ogMngACq0QK_qoKfqc"></iframe>
+
+#   https://www.google.com/maps/embed/v1/place?key={{ config.GOOGLE_API_KEY }}&q={{ place.place_id }}
+
+# <iframe
+#   width="600"
+#   height="450"
+#   frameborder="0" style="border:0"
+#   src="https://www.google.com/maps/embed/v1/directions
+#   ?key={{ config.GOOGLE_API_KEY }}&origin={{tulsa.place_id}}&destination={{place.place_id}}" 
+#   loading="lazy"
+#   allowfullscreen>
+# </iframe>

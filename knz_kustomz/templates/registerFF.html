@@ -1,0 +1,61 @@
+ {% extends "layout.html" %} {% block title %}{{title}}{% endblock %} {% block content %}
+
+<div class="container center">
+    <div class="row">
+        <div class="col m2"></div>
+        <div class="col s12 m8" style="margin-top: 12vh; background-color:transparent; border-radius: 20px;" id=card>
+            <div class="input-field">
+                <h4 class="h4 blue-grey-text" style="margin-bottom: 4vh;">Sign Up</h4>
+
+                <form action="" method="post">
+                    <div class="container input-field">
+                        {{ form.hidden_tag() }} {% if form.email.errors %}
+                        <i class="material-icons prefix">email</i> {{ form.email(class="") }}
+
+                        <div class="red-text text-accent-2">
+                            {% for error in form.email.errors %}
+                            <span>{{ error }}</span> {% endfor %}
+                        </div>
+                        {% else %} <i class="material-icons prefix">email</i> {{ form.email(class="") }} {% endif %}
+                    </div>
+
+                    <div class="container input-field">
+                        {% if form.password.errors %}
+                        <i class="material-icons prefix">enhanced_encryption
+                        </i> {{ form.password(class="") }}
+                        <div class="red-text text-accent-2">
+                            {% for error in form.password.errors %}
+                            <span>{{ error }}</span> {% endfor %}
+                        </div>
+                        {% else %} <i class="material-icons prefix">enhanced_encryption
+                        </i>{{ form.password(class="") }} {% endif %}
+                    </div>
+                    <div class="container input-field">
+                        {% if form.confirm_password.errors %} <i class="material-icons prefix">enhanced_encryption
+                        </i>{{ form.confirm_password(class="") }}
+                        <div class="red-text text-accent-2">
+                            {% for error in form.confirm_password.errors %}
+                            <span>{{ error }}</span> {% endfor %}
+                        </div>
+                        {% else %} <i class="material-icons prefix">enhanced_encryption
+                        </i>{{ form.confirm_password(class="") }} {% endif %}
+                    </div>
+                    <div class="input-field">
+                        <button style="margin-top: 5vw" class="btn waves-effect waves-light red darken-3 pulse" type="submit"><i class="material-icons right ">account_circle</i>Register</button>
+
+                    </div>
+
+                    <span><i class="material-icons">account_circle</i> Alredy have an account log in <a href="/login">here</a></span>
+
+                    <!-- <button style="margin-top: 5vw" class="btn waves-effect waves-light red darken-3 pulse" type="submit"><i class="material-icons right ">account_circle</i>Register</button> -->
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col m2"></div>
+
+
+
+{% block script %} {% endblock %} {% endblock %}

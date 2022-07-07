@@ -1,0 +1,9 @@
+{% extends "layout.html" %} {% block title %}{{title}}{% endblock %} {% block content %}
+<div class="container center-align indigo lighten-5" style="border-radius: 10px;">
+    <h2 class="z-depth-5 blue darken-4 white-text">{{place.name}}</h2>
+    <p class="flow-text">{{place.description}}</p>
+    <iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/directions?origin=place_id:{{tulsa.place_id}}&destination=place_id:{{place.place_id}}&key={{ config.GOOGLE_API_KEY }}"></iframe>
+    <iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?q=place_id:{{place.place_id}}&key={{ config.GOOGLE_API_KEY }}&maptype=satellite"></iframe>
+    <p>Go back to <a href="{{ url_for('locations')}}">locations</a> to choose another <a href="{{ url_for('locations')}}">location</a></p>
+</div>
+z-depth-4 {% block script %} {% endblock %} {% endblock %}

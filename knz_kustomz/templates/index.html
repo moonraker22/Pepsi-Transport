@@ -1,0 +1,45 @@
+{% extends "layout.html" %} {% block title %}{{title}}{% endblock %} {% block content %} {% if entries %}
+<div class="container" style="margin: 5vh auto;">
+    <table class="highlight responsive-table indigo lighten-5" style="border-radius: 10px;">
+        <thead class="z-depth-5 blue darken-4 white-text" style="font-weight: 700; text-align: center;">
+            <td>Week Starting</td>
+            <td>Total Miles</td>
+            <td>Total Milage Pay</td>
+            <td>Total Backhaul</td>
+            <td>Total Delay</td>
+            <td>Total Pay</td>
+            <td>Link To Week</td>
+        </thead>
+        <tbody>
+            {% if entries %} {% for item in range(length) %}
+            <tr>
+                <td>{{ totals_list[item][0].strftime('%m-%d-%Y') }}</td>
+                <td>{{ totals_list[item][1] }}</td>
+                {% if totals_list[item][2] %}
+                <td>{{ totals_list[item][2] | usd}}</td>
+                {% else %}
+                <td>{{ totals_list[item][2] }}</td>
+                {% endif %} {% if totals_list[item][3] %}
+                <td>{{ totals_list[item][3] | usd}}</td>
+                {% else %}
+                <td>{{ totals_list[item][3] }}</td>
+                {% endif %} {% if totals_list[item][5] %}
+                <td>{{ totals_list[item][5] | usd}}</td>
+                {% else %}
+                <td>{{ totals_list[item][5] }}</td>
+                {% endif %} {% if totals_list[item][4] %}
+                <td>{{ totals_list[item][4] | usd}}</td>
+                {% else %}
+                <td>{{ totals_list[item][4] }}</td>
+                {% endif %}
+                <td><a href="week/{{ totals_list[item][0] }}">Open Week</a></td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %} {% else %}
+    <div class="container indigo lighten-5 center-align" style="margin: 5vh auto; border-radius: 5px; padding: 5px;">
+        <h5>Click on <a href="{{ url_for('paysheets')}}">link for paysheets</a> to save and calculate pay</h5>
+    </div>
+    {% endif %} {% block script %} {% endblock %} {% endblock %}

@@ -1,0 +1,10 @@
+{% extends "layout.html" %} {% block title %}{{title}}{% endblock %} {% block content %}
+
+<div class="container indigo lighten-5" style="margin: 5vh auto; border-radius: 10px; height: 300px;">
+
+    <h1>Whoops!</h1>
+    <p class="flow-text">{{err}}</p>
+    <p class="flow-text">To go back home click <a href="{{url_for('index')}}">here</a></p>
+
+</div>
+{% block script %} {% endblock %} {% endblock %}

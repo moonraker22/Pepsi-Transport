@@ -1,0 +1,40 @@
+{% extends "layout.html" %} {% block title %}{{title}}{% endblock %} {% block content %}
+
+<div class="container" style="margin: 5vh auto;">
+    <table class="highlight responsive-table indigo lighten-5" style="border-radius: 10px;">
+        <thead class="z-depth-5 blue darken-4 white-text" style="font-weight: 700; text-align: center;">
+            <td>Date</td>
+            <td>Truck Number</td>
+            <td>Starting Milage</td>
+            <td>Ending Milage</td>
+            <td>Total Milage</td>
+            <td>Backhaul</td>
+            <td>Delay</td>
+        </thead>
+        <tbody>
+            {% for x in range(length) %}
+            <tr>
+                <td>{{ data[x].date.strftime('%m-%d-%Y') }}</td>
+                <td>{{ data[x].truck }}</td>
+                <td>{{ data[x].starting_milage }}</td>
+                <td>{{ data[x].ending_milage }}</td>
+                <td>{{ data[x].total_miles }}</td>
+                {% if data[x].backhaul %}
+                <td>{{ data[x].backhaul | usd }}</td>
+                {% else %}
+                <td>{{ data[x].backhaul }}</td>
+                {% endif %}
+                <td>{{ data[x].delay }}</td>
+            </tr>
+            {% endfor %}
+            <tr class="centered">
+                <td><a href="{{url_for('index')}}">Go back to weekly display</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="container centered indigo lighten-5" style="border-radius: 10px;">
+        <blockquote>
+            To edit entry click paysheets and enter date and only values you want to change
+        </blockquote>
+    </div>
+    {% block script %} {% endblock %} {% endblock %}

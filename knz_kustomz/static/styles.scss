@@ -1,0 +1,11 @@
+body {
+    background: url("pepsi.jpg");
+    background-size: cover;
+    z-index: -6;
+    position: relative;
+}
+
+body-main {
+    position: absolute;
+    z-index: 1;
+}

@@ -1,0 +1,10 @@
+# PEPSI TULSA TRANSPORT UNION
+#### Video Demo:  <https://youtu.be/0VQGABO6yJg>
+#### Description:
+I made a flask website for the transport union I am a part of. The website allows a user to enter milage, truck numbers, and backhauls for any given day. It will then save the info to the database and calculate the pay for the work. The user can then see all their history for any saved sheets grouped by week. The site also has all the locations we travel to saved to the database. The user can click on any location and be taken to a page that shows two google maps that I embedded through the maps api. The page also displays information about the location thats saved in the database.
+
+I used SQLAlchemy to create the database models in models.py. I also used flask login withthe UserMixin to handle the user authentication. I created a class called Paysheets to handle the users paysheets entries and save the to the database. I also created a class called Locations to save all the location info for all the facilities we travel to. Then I created a function called init_db that initilizes the database and adds all of the location info to the database.
+
+I took a page from finance and created a file called helpers.py that holds all of the functions for views.py. I created the whole app as a package and the app is instantiated in __init__.py. I also created a config.py which holds all the config values for testing, production, and debug. I have some logic in init.py that handles which values to inject based on the environment. 
+
+Of course views.py handles all the routes for the app. There is an index, a paysheets page that the user enters all the info in. Then the index page will show all the weeks that were entered, and also calculates the pay. There's some dynamic routing implemented through the week view that shows any given weeks daily breakdown. Then there's locations that takes the user to a form where they choose a location. After choosing they are dynamically routed to a page for that location with the maps pulled from google maps api.
